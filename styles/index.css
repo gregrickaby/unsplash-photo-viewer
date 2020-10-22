@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles here */
+.shrink {
+  @apply py-4 duration-100 ease-in-out;
+}
