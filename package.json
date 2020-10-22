@@ -33,10 +33,11 @@
     "storybook": "start-storybook -p 6006"
   },
   "dependencies": {
+    "axios": "^0.20.0",
     "hamburger-react": "^2.2.0",
     "next": "latest",
-    "react": "16.14.0",
-    "react-dom": "16.14.0"
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
@@ -60,7 +61,7 @@
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.1.2",
     "prop-types": "^15.7.2",
-    "react-is": "^16.13.1",
+    "react-is": "^17.0.1",
     "stylelint": "^13.7.2",
     "stylelint-config-standard": "^20.0.0",
     "tailwindcss": "^1.9.5"
