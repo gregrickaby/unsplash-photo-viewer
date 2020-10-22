@@ -9,11 +9,11 @@ export default function Photos(props) {
 }
 
 export async function getStaticProps() {
-  const photos = await getPhotos()
+  const photos = await getPhotos(5)
   return {
     props: {
       photos
     },
-    revalidate: 60
+    revalidate: 5
   }
 }
