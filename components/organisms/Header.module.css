@@ -1,0 +1,11 @@
+.header {
+  @apply bg-white border-b border-gray-200;
+}
+
+.siteName {
+  @apply text-2xl font-bold;
+}
+
+.siteDescription {
+  @apply text-xl;
+}
