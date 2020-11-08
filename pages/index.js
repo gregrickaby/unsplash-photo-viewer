@@ -1,11 +1,12 @@
 import {getPhotos} from '@/api/getPhotos'
+import Layout from '@/components/common/Layout'
 import Image from 'next/image'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 
 export default function Homepage(props) {
   return (
-    <>
+    <Layout>
       {props.photos.map((photo) => {
         const {
           id,
@@ -32,7 +33,7 @@ export default function Homepage(props) {
           </div>
         )
       })}
-    </>
+    </Layout>
   )
 }
 

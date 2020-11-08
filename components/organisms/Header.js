@@ -1,37 +1,21 @@
-import {shrinkHeader} from '@/lib/functions'
 import Link from 'next/link'
-import {useEffect, useRef} from 'react'
-import Navigation from '../molecules/Navigation'
-
-function Logo() {
-  return (
-    <Link href="/">
-      <a>
-        <img
-          src="/logo.svg"
-          alt="site logo"
-          loading="lazy"
-          height="128"
-          width="128"
-        />
-      </a>
-    </Link>
-  )
-}
+import Image from 'next/image'
 
 export default function Header() {
-  const headerRef = useRef(null)
-  useEffect(() => {
-    shrinkHeader(headerRef)
-  }, [])
   return (
-    <header
-      ref={headerRef}
-      className="sticky top-0 py-8 transition-all bg-white border-b border-gray-200"
-    >
+    <header className="sticky top-0 py-8 transition-all bg-white border-b border-gray-200">
       <div className="container px-4 lg:px-0 flex items-center justify-between">
-        <Logo />
-        <Navigation />
+        <Link href="/">
+          <a>
+            <Image
+              src="/logo.svg"
+              alt="website logo"
+              loading="lazy"
+              height="128"
+              width="128"
+            />
+          </a>
+        </Link>
       </div>
     </header>
   )

@@ -9,7 +9,7 @@ export default function Layout({children, ...props}) {
     <>
       <Meta title={props.title} description={props.description} />
       <Header />
-      <main>{children}</main>
+      <main className="container">{children}</main>
       <Footer />
     </>
   )
@@ -21,7 +21,7 @@ Layout.defaultProps = {
 }
 
 Layout.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.array.isRequired,
   description: PropTypes.string,
   title: PropTypes.string
 }

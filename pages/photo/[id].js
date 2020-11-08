@@ -1,4 +1,5 @@
 import {getPhotoById, getPhotos} from '@/api/getPhotos'
+import Layout from '@/components/common/Layout'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 
@@ -12,7 +13,7 @@ export default function Photo({photo}) {
     exif: {make, model, exposure_time, aperture, focal_length, is}
   } = photo
   return (
-    <>
+    <Layout>
       <h1>{description}</h1>
       <p>{likes}</p>
       <p>{id}</p>
@@ -26,7 +27,7 @@ export default function Photo({photo}) {
       <Link href="/photos">
         <a>Go Back</a>
       </Link>
-    </>
+    </Layout>
   )
 }
 
