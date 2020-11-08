@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types'
-import Meta from './Meta'
-import Header from '../organisms/Header'
-import Footer from '../organisms/Footer'
 import config from '@/lib/config'
+import PropTypes from 'prop-types'
+import Footer from '../organisms/Footer'
+import Header from '../organisms/Header'
+import Meta from './Meta'
 
 export default function Layout({children, ...props}) {
   return (

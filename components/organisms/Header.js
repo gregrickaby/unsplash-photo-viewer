@@ -1,6 +1,6 @@
-import {useEffect, useRef} from 'react'
-import Link from 'next/link'
 import {shrinkHeader} from '@/lib/functions'
+import Link from 'next/link'
+import {useEffect, useRef} from 'react'
 import Navigation from '../molecules/Navigation'
 
 function Logo() {

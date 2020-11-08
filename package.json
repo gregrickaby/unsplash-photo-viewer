@@ -23,9 +23,9 @@
     "develop": "yarn dev",
     "export": "next export",
     "format": "npx prettier --config=prettier.config.js '**/*.{js,jsx,ts,tsx,md,html,css,scss,json}' --write || true",
-    "lint": "yarn lint:js && yarn lint:css",
-    "lint:css": "npx stylelint --config=stylelint.config.js --fix || true",
-    "lint:js": "npx eslint --config=.eslintrc.js --fix || true",
+    "lint": "yarn format && yarn lint:js && yarn lint:css",
+    "lint:css": "npx stylelint --config=stylelint.config.js '**/*.css' --fix || true",
+    "lint:js": "npx eslint --config=.eslintrc.js ./ --fix || true",
     "start": "next start"
   },
   "dependencies": {
@@ -60,14 +60,8 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "yarn lint:js",
-      "yarn format"
-    ],
-    "*.css": [
-      "yarn lint:css",
-      "yarn format"
-    ],
-    "*.{md,json,html}": "yarn format"
+    "*.js": "npx eslint --config=.eslintrc.js --fix",
+    "*.css": "npx stylelint --config=stylelint.config.js --fix",
+    "*.{md,json,html}": "npx prettier --config=prettier.config.js --write"
   }
 }

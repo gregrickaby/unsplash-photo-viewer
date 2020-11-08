@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
 import '@/styles/index.css'
+import PropTypes from 'prop-types'
 
 /**
  * Support for Core Web Vitals.

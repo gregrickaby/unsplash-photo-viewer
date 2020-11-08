@@ -1,6 +1,10 @@
 import axios from 'axios'
 
-// Define basic Axios config.
+/**
+ * Set up Axios config options.
+ *
+ * @see https://github.com/axios/axios#request-config
+ */
 const axiosConfig = {
   baseURL: process.env.UNSPLASH_BASE_URL,
   headers: {'Content-Type': 'application/json'},
@@ -12,6 +16,6 @@ const axiosConfig = {
 }
 
 /**
- * Set up instance of axios with default config for querying Unsplash API.
+ * Export an instance of Axios.
  */
 export const unsplashApi = axios.create(axiosConfig)

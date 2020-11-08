@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types'
-import {getPhoto, getPhotos} from '@/api/getPhotos'
+import {getPhotoById, getPhotos} from '@/api/getPhotos'
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 
 export default function Photo({photo}) {
   const {
@@ -15,6 +15,7 @@ export default function Photo({photo}) {
     <>
       <h1>{description}</h1>
       <p>{likes}</p>
+      <p>{id}</p>
       <img src={regular} alt={alt_description} loading="lazy" width="1080" />
       <p>{make}</p>
       <p>{model}</p>
@@ -45,7 +46,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({params}) {
-  const photo = await getPhoto(params.id)
+  const photo = await getPhotoById(params.id)
   return {props: {photo}}
 }
 

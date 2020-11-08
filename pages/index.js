@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types'
 import {getPhotos} from '@/api/getPhotos'
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
+import PropTypes from 'prop-types'
 
 export default function Homepage(props) {
   return (
