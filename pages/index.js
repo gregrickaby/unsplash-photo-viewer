@@ -16,7 +16,7 @@ export default function Homepage(props) {
         return (
           <div
             className="relative"
-            style={{width: '1080px', height: '1080px'}}
+            style={{width: '768px', height: '768px'}}
             key={id}
           >
             <Link href={`/photo/${id}`}>
