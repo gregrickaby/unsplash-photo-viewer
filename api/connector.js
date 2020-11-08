@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-// Define basic axios config.
+// Define basic Axios config.
 const axiosConfig = {
   baseURL: process.env.UNSPLASH_BASE_URL,
   headers: {'Content-Type': 'application/json'},

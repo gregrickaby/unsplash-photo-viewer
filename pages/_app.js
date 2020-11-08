@@ -9,7 +9,7 @@ import '@/styles/index.css'
  * @see https://nextjs.org/blog/next-9-4#integrated-web-vitals-reporting
  */
 export function reportWebVitals(metric) {
-  //console.log(metric)
+  console.log(metric)
 }
 
 const App = ({Component, pageProps}) => <Component {...pageProps} />

@@ -1,15 +1,15 @@
 {
-  "name": "nextjs-starter",
+  "name": "unsplash-photos",
   "version": "0.1.0",
-  "description": "A slightly opinionated, yet bare-bones Next.js starter.",
-  "homepage": "https://github.com/gregrickaby/nextjs-starter/blob/main/README.md",
+  "description": "Display my photos from Unsplash.",
+  "homepage": "https://github.com/gregrickaby/unsplash/blob/main/README.md",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gregrickaby/nextjs-starter.git"
+    "url": "git+https://github.com/gregrickaby/unsplash.git"
   },
   "author": "Greg Rickaby <gregrickaby@gmail.com>",
   "bugs": {
-    "url": "https://github.com/gregrickaby/nextjs-starter/issues"
+    "url": "https://github.com/gregrickaby/unsplash/issues"
   },
   "private": true,
   "license": "GPL-2.0",
@@ -18,10 +18,7 @@
   },
   "scripts": {
     "build": "next build",
-    "build-storybook": "build-storybook",
     "clean": "rm -rf .next",
-    "deploy prod": "now --prod",
-    "deploy staging": "now",
     "dev": "yarn clean && next dev",
     "develop": "yarn dev",
     "export": "next export",
@@ -29,25 +26,17 @@
     "lint": "yarn format && yarn lint:js && yarn lint:css",
     "lint:css": "npx stylelint --config=stylelint.config.js '**/*.css' --fix || true",
     "lint:js": "npx eslint --config=.eslintrc.js ./ --fix || true",
-    "start": "next start",
-    "storybook": "start-storybook -p 6006"
+    "start": "next start"
   },
   "dependencies": {
     "axios": "^0.21.0",
-    "hamburger-react": "^2.3.0",
     "next": "^10.0.2-canary.4",
     "react": "17.0.1",
     "react-dom": "17.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
-    "@storybook/addon-a11y": "^6.0.28",
-    "@storybook/addon-actions": "^6.0.28",
-    "@storybook/addon-essentials": "^6.0.28",
-    "@storybook/addon-links": "^6.0.28",
-    "@storybook/react": "^6.0.28",
     "babel-loader": "^8.1.0",
-    "chromatic": "^5.3.0",
     "eslint": "^7.13.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-import": "^2.22.1",
@@ -61,7 +50,6 @@
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.1.2",
     "prop-types": "^15.7.2",
-    "react-is": "^17.0.1",
     "stylelint": "^13.7.2",
     "stylelint-config-standard": "^20.0.0",
     "tailwindcss": "^1.9.6"
@@ -70,5 +58,9 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+    "lint-staged": {
+    "*.js": ["npx eslint --config=stylelint.config.js --cache --fix", "npx prettier --config=prettier.config.js --write"],
+    "*.css": ["npx stylelint --config=.eslintrc.js --fix", "npx prettier --config=prettier.config.js --write"]
   }
 }
