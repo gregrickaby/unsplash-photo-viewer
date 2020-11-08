@@ -14,19 +14,21 @@ export default function Photo({photo}) {
   } = photo
   return (
     <Layout>
-      <h1>{description}</h1>
-      <p>{likes}</p>
-      <p>{id}</p>
-      <img src={regular} alt={alt_description} loading="lazy" width="1080" />
-      <p>{make}</p>
-      <p>{model}</p>
-      <p>{exposure_time}</p>
-      <p>{aperture}</p>
-      <p>{focal_length}</p>
-      <p>{is}</p>
-      <Link href="/photos">
-        <a>Go Back</a>
-      </Link>
+      <div className="wrap">
+        <h1>{description}</h1>
+        <img src={regular} alt={alt_description} loading="lazy" />
+        <p>{likes}</p>
+        <p>{id}</p>
+        <p>{make}</p>
+        <p>{model}</p>
+        <p>{exposure_time}</p>
+        <p>{aperture}</p>
+        <p>{focal_length}</p>
+        <p>{is}</p>
+        <Link href="/">
+          <a>Go Back</a>
+        </Link>
+      </div>
     </Layout>
   )
 }
