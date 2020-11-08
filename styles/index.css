@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 /* Custom styles here */
-.shrink {
-  @apply py-4 duration-100 ease-in-out;
+.wrap {
+  @apply m-auto p-4 text-center text-sm;
 }

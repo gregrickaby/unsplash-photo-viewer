@@ -1,9 +1,10 @@
 import {unsplashApi} from '../connector'
+import PropTypes from 'prop-types'
 
 /**
  * Fetch photos from Unsplash.
  *
- * @param integer perPage The number of photos to fetch.
+ * @param {integer} perPage The number of photos to fetch.
  */
 export async function getPhotos(perPage) {
   const limit = perPage ? `?per_page=${perPage}` : `?per_page=5`
@@ -17,12 +18,16 @@ export async function getPhotos(perPage) {
     })
 }
 
+getPhotos.propTypes = {
+  perPage: PropTypes.number.isRequired
+}
+
 /**
- * Fetch a photo based on the ID from Unsplash.
+ * Fetch a single photo based on the ID.
  *
- * @param string id The photo ID to fetch.
+ * @param {string} id The photo ID to fetch.
  */
-export async function getPhoto(id) {
+export async function getPhotoById(id) {
   return await unsplashApi
     .get(`/photos/${id}`)
     .then((response) => {
@@ -31,4 +36,8 @@ export async function getPhoto(id) {
     .catch((error) => {
       console.error(error)
     })
+}
+
+getPhotoById.propTypes = {
+  id: PropTypes.string.isRequired
 }

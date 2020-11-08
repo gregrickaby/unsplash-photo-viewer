@@ -1,15 +1,15 @@
-import PropTypes from 'prop-types'
-import Meta from './Meta'
-import Header from '../organisms/Header'
-import Footer from '../organisms/Footer'
 import config from '@/lib/config'
+import PropTypes from 'prop-types'
+import Footer from '../organisms/Footer'
+import Header from '../organisms/Header'
+import Meta from './Meta'
 
 export default function Layout({children, ...props}) {
   return (
     <>
       <Meta title={props.title} description={props.description} />
       <Header />
-      <main>{children}</main>
+      <main className="container">{children}</main>
       <Footer />
     </>
   )
@@ -21,7 +21,7 @@ Layout.defaultProps = {
 }
 
 Layout.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.array.isRequired,
   description: PropTypes.string,
   title: PropTypes.string
 }

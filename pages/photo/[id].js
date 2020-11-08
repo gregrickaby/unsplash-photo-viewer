@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types'
-import {getPhoto, getPhotos} from '@/api/getPhotos'
+import {getPhotoById, getPhotos} from '@/api/getPhotos'
+import Layout from '@/components/common/Layout'
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 
 export default function Photo({photo}) {
   const {
@@ -12,20 +13,23 @@ export default function Photo({photo}) {
     exif: {make, model, exposure_time, aperture, focal_length, is}
   } = photo
   return (
-    <>
-      <h1>{description}</h1>
-      <p>{likes}</p>
-      <img src={regular} alt={alt_description} loading="lazy" width="1080" />
-      <p>{make}</p>
-      <p>{model}</p>
-      <p>{exposure_time}</p>
-      <p>{aperture}</p>
-      <p>{focal_length}</p>
-      <p>{is}</p>
-      <Link href="/photos">
-        <a>Go Back</a>
-      </Link>
-    </>
+    <Layout>
+      <div className="wrap">
+        <h1>{description}</h1>
+        <img src={regular} alt={alt_description} loading="lazy" />
+        <p>{likes}</p>
+        <p>{id}</p>
+        <p>{make}</p>
+        <p>{model}</p>
+        <p>{exposure_time}</p>
+        <p>{aperture}</p>
+        <p>{focal_length}</p>
+        <p>{is}</p>
+        <Link href="/">
+          <a>Go Back</a>
+        </Link>
+      </div>
+    </Layout>
   )
 }
 
@@ -45,7 +49,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({params}) {
-  const photo = await getPhoto(params.id)
+  const photo = await getPhotoById(params.id)
   return {props: {photo}}
 }
 

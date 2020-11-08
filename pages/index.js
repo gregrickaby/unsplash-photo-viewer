@@ -1,15 +1,52 @@
-import config from '@/lib/config'
+import {getPhotos} from '@/api/getPhotos'
 import Layout from '@/components/common/Layout'
-import Hero from '@/components/molecules/Hero'
+import Image from 'next/image'
+import Link from 'next/link'
+import PropTypes from 'prop-types'
 
-export default function HomePage() {
+export default function Homepage(props) {
   return (
-    <Layout title={config.siteTitle} description={config.siteDescription}>
-      <Hero
-        background="https://images.unsplash.com/photo-1513106021000-168e5f56609d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2560&q=70"
-        title="Next.js Starter"
-        description="A slightly opinionated, yet bare-bones Next.js starter."
-      />
+    <Layout>
+      {props.photos.map((photo) => {
+        const {
+          id,
+          alt_description,
+          urls: {regular}
+        } = photo
+        return (
+          <div
+            className="relative"
+            style={{width: '768px', height: '768px'}}
+            key={id}
+          >
+            <Link href={`/photo/${id}`}>
+              <a aria-label={alt_description}>
+                <Image
+                  src={regular}
+                  alt={alt_description}
+                  layout="fill"
+                  objectFit="cover"
+                  quality={80}
+                />
+              </a>
+            </Link>
+          </div>
+        )
+      })}
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  const photos = await getPhotos(5)
+  return {
+    props: {
+      photos
+    },
+    revalidate: 5
+  }
+}
+
+Homepage.propTypes = {
+  photos: PropTypes.array
 }

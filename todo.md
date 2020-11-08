@@ -10,7 +10,6 @@ Infinite Scroll Unsplash Goals
 8. Set up a search and useDebounce https://github.com/streamich/react-use/blob/master/docs/useDebounce.md
 9. Use CSS Modules for styles
 
-
 https://swr.vercel.app/
 https://github.com/axios/axios#example
 https://codepen.io/gregrickaby/pen/OJXXNvq
