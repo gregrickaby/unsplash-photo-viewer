@@ -1,5 +1,5 @@
-import {unsplashApi} from '../connector'
 import PropTypes from 'prop-types'
+import {unsplashApi} from '../connector'
 
 /**
  * Fetch photos from Unsplash.
