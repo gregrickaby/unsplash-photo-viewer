@@ -9,8 +9,7 @@ const axiosConfig = {
   baseURL: process.env.UNSPLASH_BASE_URL,
   headers: {'Content-Type': 'application/json'},
   params: {
-    client_id: process.env.UNSPLASH_APP_ACCESS_KEY,
-    order_by: 'popular'
+    client_id: process.env.UNSPLASH_APP_ACCESS_KEY
   },
   responseType: 'json'
 }
