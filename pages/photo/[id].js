@@ -70,7 +70,7 @@ export default function Photo({photo}) {
 }
 
 export async function getStaticPaths() {
-  const photos = await getPhotos(5)
+  const photos = await getPhotos()
 
   return {
     paths: photos.map((photo) => {
@@ -86,7 +86,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({params}) {
   const photo = await getPhotoById(params.id)
-  console.log(photo)
   return {props: {photo}}
 }
 
