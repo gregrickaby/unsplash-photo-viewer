@@ -14,8 +14,7 @@
 
 ## Further reading...
 
-- https://swr.vercel.app/
-- https://github.com/axios/axios#example
-- https://codepen.io/gregrickaby/pen/OJXXNvq
-- https://unsplash.com/oauth/applications/176226
-- https://api.unsplash.com/photos/?client_id=3aWzSPDhC2GOV-hK_GtuYrqceonaYwbfdkN4RrWnRi4&page=1&per_page=5&order_by=popular
+- https://github.com/axios/axios#example (axios docs)
+- https://codepen.io/gregrickaby/pen/OJXXNvq (intersection obsever - lazy load images)
+- https://unsplash.com/oauth/applications/176226 (api dashboard)
+- https://api.unsplash.com/photos/?client_id=3aWzSPDhC2GOV-hK_GtuYrqceonaYwbfdkN4RrWnRi4&page=1&per_page=5&order_by=popular (example request)
