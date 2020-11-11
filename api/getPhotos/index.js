@@ -7,13 +7,13 @@ import {unsplashApi} from '../connector'
  */
 export async function getPhotos(pageNumber, perPage, orderBy) {
   const page = pageNumber ? pageNumber : 1
-  const limit = perPage ? perPage : 9
+  const limit = perPage ? perPage : 99
   const sort = orderBy ? orderBy : 'latest'
 
   return await unsplashApi
-    .get(`/photos?page=${page}&per_page=${limit}&order_by=${sort}`)
+    .get(`/users/gregrickaby?page=${page}&per_page=${limit}&order_by=${sort}`)
     .then((response) => {
-      return response.data
+      return response.data.photos
     })
     .catch((error) => {
       console.error(error)
