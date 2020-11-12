@@ -11,9 +11,21 @@
 7. Create single page for each image, which includes all the details ✅
 8. Display tags as facet, clicking a facet will filter the photos
 9. Use TailwindCSS + CSS Modules for styles ✅
+10. Offer dark mode
+
+## Issues
+
+1. Unsplash requires authentication, and storing secrets is hard for infinite scroll because my code is set for build time.
+2. I need client-side data fetching and to move Unsplash creds into NEXT*PUBLIC* env vars.
+3. The initial fetch is easy, infinite scroll fetches are hard.
+
+## Notes
+
+- Unsplash will only ever return a max of 30 photos.
 
 ## Further reading...
 
+- https://nextjs.org/docs/api-reference/next/image
 - https://github.com/axios/axios#example (axios docs)
 - https://codepen.io/gregrickaby/pen/OJXXNvq (intersection obsever - lazy load images)
 - https://unsplash.com/oauth/applications/176226 (api dashboard)
