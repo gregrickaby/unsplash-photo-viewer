@@ -7,7 +7,7 @@ import {unsplashApi} from '../connector'
  */
 export async function getPhotos(pageNumber, perPage, orderBy) {
   const page = pageNumber ? pageNumber : 1
-  const limit = perPage ? perPage : 30
+  const limit = perPage ? perPage : 9
   const sort = orderBy ? orderBy : 'latest'
 
   return await unsplashApi
