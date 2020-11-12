@@ -1,6 +1,5 @@
 import {getPhotoById, getPhotos} from '@/api/getPhotos'
 import Layout from '@/components/common/Layout'
-import Image from 'next/image'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 
@@ -27,13 +26,12 @@ export default function Photo({photo}) {
       <div className="wrap">
         <h1>{description}</h1>
         <img src={regular} alt={alt_description} loading="lazy" />
-
         <div>
           <p>
             <strong>Photographer</strong>
           </p>
           <a href={html}>
-            <Image src={small} height={32} width={32} alt={name} />
+            <img src={small} height={32} width={32} alt={name} />
             <p>{name}</p>
           </a>
         </div>
