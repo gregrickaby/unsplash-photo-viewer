@@ -3,14 +3,17 @@ import Head from 'next/head'
 import PropTypes from 'prop-types'
 
 export default function Meta(props) {
+  const {title, description} = props
+  const {author, siteUrl} = config
+
   return (
     <Head>
       <title>
-        {props.title} - {props.description}
+        {title} - {description}
       </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-      <meta name="description" content={props.description} />
+      <meta name="description" content={description} />
       <meta name="msapplication-TileColor" content="#fffff" />
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#fff" />
@@ -34,23 +37,20 @@ export default function Meta(props) {
       <link rel="manifest" href="/favicon/site.webmanifest" />
       <link rel="shortcut icon" href="/favicon/favicon.ico" />
       <meta name="twitter:card" content="summary" />
-      <meta name="twitter:url" content={config.siteUrl} />
-      <meta name="twitter:title" content={props.title} />
-      <meta name="twitter:description" content={props.description} />
+      <meta name="twitter:url" content={siteUrl} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
       <meta
         name="twitter:image"
-        content={`${config.siteUrl}/favicon/android-icon-192x192.png`}
+        content={`${siteUrl}/favicon/android-icon-192x192.png`}
       />
-      <meta name="twitter:creator" content={config.author} />
+      <meta name="twitter:creator" content={author} />
       <meta property="og:type" content="website" />
-      <meta property="og:title" content={props.title} />
-      <meta property="og:description" content={props.description} />
-      <meta property="og:site_name" content={props.title} />
-      <meta property="og:url" content={config.siteUrl} />
-      <meta
-        property="og:image"
-        content={`${config.siteUrl}/favicon/apple-icon.png`}
-      />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:site_name" content={title} />
+      <meta property="og:url" content={siteUrl} />
+      <meta property="og:image" content={`${siteUrl}/favicon/apple-icon.png`} />
     </Head>
   )
 }

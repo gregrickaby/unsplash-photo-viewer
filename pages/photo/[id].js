@@ -21,6 +21,7 @@ export default function Photo({photo}) {
       profile_image: {small}
     }
   } = photo
+
   return (
     <Layout>
       <div className="wrap">

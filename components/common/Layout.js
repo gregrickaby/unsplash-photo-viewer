@@ -5,9 +5,11 @@ import Header from '../organisms/Header'
 import Meta from './Meta'
 
 export default function Layout({children, ...props}) {
+  const {title, description} = props
+
   return (
     <>
-      <Meta title={props.title} description={props.description} />
+      <Meta title={title} description={description} />
       <Header />
       <main className="container">{children}</main>
       <Footer />
@@ -21,7 +23,7 @@ Layout.defaultProps = {
 }
 
 Layout.propTypes = {
-  children: PropTypes.array.isRequired,
+  children: PropTypes.any.isRequired,
   description: PropTypes.string,
   title: PropTypes.string
 }

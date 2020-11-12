@@ -5,14 +5,17 @@ import styles from './Card.module.css'
 
 export default function Card(props) {
   const {id, alt, src} = props
+
   return (
-    <div className={cn(styles.Card)}>
+    <>
       <Link href={`/photo/${id}`}>
         <a aria-label={alt}>
-          <img src={src} alt={alt} />
+          <div className={cn(styles.cardContainer)}>
+            <img src={src} alt={alt} loading="lazy" />
+          </div>
         </a>
       </Link>
-    </div>
+    </>
   )
 }
 

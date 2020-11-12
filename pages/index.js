@@ -6,6 +6,7 @@ import Masonry from 'react-masonry-css'
 
 export default function Homepage(props) {
   const photos = props.photos
+
   return (
     <Layout>
       <Masonry

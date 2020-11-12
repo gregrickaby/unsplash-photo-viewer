@@ -4,16 +4,21 @@ import Link from 'next/link'
 import styles from './Footer.module.css'
 
 export default function Footer() {
+  const {
+    author,
+    siteName,
+    social: {github, twitter}
+  } = config
+
   return (
     <footer className={styles.footer}>
       <div className={cn('wrap', styles.container)}>
-        &copy; {new Date().getFullYear()} {config.siteName} by {config.author}{' '}
-        &middot;{' '}
-        <Link href={config.social.github.href}>
+        &copy; {new Date().getFullYear()} {siteName} by {author} &middot;{' '}
+        <Link href={github.href}>
           <a>Github</a>
         </Link>{' '}
         &middot;{' '}
-        <Link href={config.social.twitter.href}>
+        <Link href={twitter.href}>
           <a>Twitter</a>
         </Link>
       </div>
