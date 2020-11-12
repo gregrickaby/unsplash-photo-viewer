@@ -7,40 +7,15 @@ import Masonry from 'react-masonry-css'
 
 export default function Homepage(props) {
   const [photos, setPhotos] = useState(props.photos)
-  const [state, setState] = useState('finished')
   const page = useRef(2)
 
-  function fetchSomething() {
-    // Update our app state.
-    setState('loading')
+  async function loadMore() {
+    // Go fetch the next page worth of photos.
+    const newPhotos = await getPhotos(page.current)
 
-    const url = `https://api.unsplash.com/photos/?client_id=${process.env.NEXT_PUBLIC_UNSPLASH_APP_ACCESS_KEY}&page=${page.current}&per_page=9&order_by=latest`
-
-    // Fetch
-    fetch(url)
-      .then((response) => {
-        // If there's no response...
-        if (!response.ok) {
-          setState('error')
-        }
-        return response.json()
-      })
-      // If everything is good...
-      .then((data) => {
-        // Spread in previous photos, and append new photos.
-        setPhotos((photos) => [...photos, ...data])
-        setState('finished')
-        page.current++ // increment our page number.
-      })
-      .catch(() => setState('error'))
+    // Append new photos to preview photos.
+    setPhotos((photos) => [...photos, ...newPhotos])
   }
-
-  if (state === 'error')
-    return (
-      <Layout>
-        <p>There was an error loading photos. Please try again later.</p>
-      </Layout>
-    )
 
   return (
     <Layout>
@@ -62,7 +37,7 @@ export default function Homepage(props) {
       </Masonry>
       <button
         className="bg-gray-400 p-4 mt-4 flex justify-center m-auto text-center"
-        onClick={fetchSomething}
+        onClick={loadMore}
       >
         Load more photos
       </button>
