@@ -3,7 +3,6 @@ import Layout from '@/components/common/Layout'
 import Card from '@/components/molecules/Card'
 import PropTypes from 'prop-types'
 import {useRef, useState} from 'react'
-import Masonry from 'react-masonry-css'
 
 export default function Homepage(props) {
   const [photos, setPhotos] = useState(props.photos)
@@ -15,26 +14,23 @@ export default function Homepage(props) {
 
     // Append new photos to preview photos.
     setPhotos((photos) => [...photos, ...newPhotos])
+
+    // Increment page number after each load.
+    page.current++
   }
 
   return (
     <Layout>
-      <Masonry
-        breakpointCols={3}
-        className="masonry-grid"
-        columnClassName="masonry-grid-column"
-      >
-        {photos.map((photo, index) => {
-          return (
-            <Card
-              key={index}
-              id={photo.id}
-              alt={photo.alt_description}
-              src={photo.urls.regular}
-            />
-          )
-        })}
-      </Masonry>
+      {photos.map((photo, index) => {
+        return (
+          <Card
+            key={index}
+            id={photo.id}
+            alt={photo.alt_description}
+            src={photo.urls.regular}
+          />
+        )
+      })}
       <button
         className="bg-gray-400 p-4 mt-4 flex justify-center m-auto text-center"
         onClick={loadMore}
