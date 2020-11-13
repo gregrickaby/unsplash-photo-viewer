@@ -1,0 +1,40 @@
+.imageContainer {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  max-width: 100vw;
+  width: 100vw;
+}
+
+.dialog {
+  @apply border rounded-lg border-gray-300 shadow-xl;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.details {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+
+  & strong {
+    display: block;
+    margin-bottom: 4px;
+  }
+}
+
+.credits {
+  & .photographer {
+    display: flex;
+    align-items: center;
+  }
+
+  & img {
+    margin-right: 8px;
+  }
+}
