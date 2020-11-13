@@ -7,20 +7,9 @@
   @apply m-auto p-4 text-center text-sm;
 }
 
-.masonry-grid {
-  display: flex;
-  margin-left: -16px; /* gutter size offset */
-  width: auto;
-}
-
-.masonry-grid-column {
-  padding-left: 16px; /* gutter size */
-  background-clip: padding-box;
-}
-
-/* Style your items */
-.masonry-grid-column > div {
-  /* change div to reference your elements you put in <Masonry> */
-  background: grey;
-  margin-bottom: 30px;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: masonry;
+  gap: 10px;
 }
