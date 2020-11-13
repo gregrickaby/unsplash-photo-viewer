@@ -7,7 +7,7 @@ export default function Card(props) {
   const {id, alt, src} = props
 
   return (
-    <>
+    <article className={styles.card}>
       <Link href={`/photo/${id}`}>
         <a aria-label={alt}>
           <div className={cn(styles.cardContainer)}>
@@ -15,7 +15,7 @@ export default function Card(props) {
           </div>
         </a>
       </Link>
-    </>
+    </article>
   )
 }
 
