@@ -1,12 +1,15 @@
 import {getPhotoById} from '@/api/getPhotos'
-import Layout from '@/components/common/Layout'
-import Image from 'next/image'
+import Description from '@/components/Description'
+import Figure from '@/components/Figure'
+import Layout from '@/components/Layout'
+import Photographer from '@/components/Photographer'
+import Social from '@/components/Social'
+import Technical from '@/components/Technical'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 import {useRef, useState} from 'react'
-import styles from './single.module.css'
 
-export default function Photo({photo}) {
+export default function Photo({data}) {
   const {
     width,
     height,
@@ -16,13 +19,13 @@ export default function Photo({photo}) {
     views,
     downloads,
     urls: {full},
-    exif: {make, model, exposure_time, aperture, focal_length, iso},
+    exif,
     user: {
       name,
       links: {html},
       profile_image: {small}
     }
-  } = photo
+  } = data
 
   const [dialog, setDialog] = useState(false)
   const detailsDialog = useRef(null)
@@ -41,77 +44,49 @@ export default function Photo({photo}) {
 
   return (
     <Layout>
-      <article className={styles.single}>
-        <figure className={styles.imageContainer}>
-          <Image
-            className={styles.image}
-            src={full}
-            alt={alt_description}
-            layout="responsive"
-            width={width}
-            height={height}
-          />
-        </figure>
+      <Figure
+        source={full}
+        description={alt_description}
+        height={height}
+        width={width}
+      />
 
-        <dialog
-          className={styles.dialog}
-          ref={detailsDialog}
-          onKeyDown={(e) => {
-            if (e.code === 'Escape') toggleDialog()
-          }}
-        >
-          <header className={styles.header}>
-            <h1 className={styles.title}>{description}</h1>
-          </header>
-
-          <div className={styles.details}>
-            <div className={styles.credits}>
-              <strong>Photographer</strong>
-              <div className={styles.photographer}>
-                <img src={small} height={32} width={32} alt={name} />
-                <a href={html}>
-                  <p>{name}</p>
-                </a>
-              </div>
-            </div>
-            <div className={styles.social}>
-              <strong>Social Stats</strong>
-              <p>Likes: {likes.toLocaleString('en')}</p>
-              <p>Views: {views.toLocaleString('en')}</p>
-              <p>Downloads: {downloads.toLocaleString('en')}</p>
-            </div>
-            <div className={styles.technical}>
-              <strong>Technical Details</strong>
-              <p>Camera Make: {make}</p>
-              <p>Camera Model: {model}</p>
-              <p>Focal Length: {focal_length}</p>
-              <p>Aperture: ƒ/{aperture}</p>
-              <p>Shutter Speed: {exposure_time}s</p>
-              <p>ISO: {iso}</p>
-              <p>
-                Dimensions: {width} × {height}
-              </p>
-            </div>
-          </div>
-        </dialog>
-
-        <button onClick={toggleDialog}>Show info</button>
+      <div className="footer">
+        <button onClick={toggleDialog}>Details</button>
 
         <Link href="/">
-          <a>Go Back</a>
+          <button>Back</button>
         </Link>
-      </article>
+      </div>
+
+      <dialog
+        className="dialog"
+        ref={detailsDialog}
+        onKeyDown={(e) => {
+          if (e.code === 'Escape') toggleDialog()
+        }}
+      >
+        <button className="close-dialog" onClick={toggleDialog}>
+          <span className="sr-only">Close details</span>X
+        </button>
+        <div className="details">
+          <Description description={description} />
+          <Photographer avatar={small} link={html} name={name} />
+          <Social downloads={downloads} likes={likes} views={views} />
+          <Technical height={height} width={width} exif={exif} />
+        </div>
+      </dialog>
     </Layout>
   )
 }
 
 export async function getServerSideProps({params}) {
-  const photo = await getPhotoById(params.id)
-  return {props: {photo}}
+  const data = await getPhotoById(params.id)
+  return {props: {data}}
 }
 
 Photo.propTypes = {
-  photo: PropTypes.shape({
+  data: PropTypes.shape({
     width: PropTypes.number,
     height: PropTypes.number,
     description: PropTypes.string,

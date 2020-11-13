@@ -1,11 +1,11 @@
 import {getPhotos} from '@/api/getPhotos'
-import Layout from '@/components/common/Layout'
-import Card from '@/components/molecules/Card'
+import Card from '@/components/Card'
+import Layout from '@/components/Layout'
 import PropTypes from 'prop-types'
 import {useRef, useState} from 'react'
 
-export default function Homepage(props) {
-  const [photos, setPhotos] = useState(props.photos)
+export default function Homepage({data}) {
+  const [photos, setPhotos] = useState(data)
   const page = useRef(2)
 
   async function loadMore() {
@@ -35,26 +35,21 @@ export default function Homepage(props) {
             )
           })}
       </div>
-      <button
-        className="bg-gray-400 p-4 mt-4 flex justify-center m-auto text-center"
-        onClick={loadMore}
-      >
-        Load more photos
-      </button>
+      <button onClick={loadMore}>Load more photos</button>
     </Layout>
   )
 }
 
 export async function getStaticProps() {
-  const photos = await getPhotos()
+  const data = await getPhotos()
   return {
     props: {
-      photos
+      data
     },
     revalidate: 60
   }
 }
 
 Homepage.propTypes = {
-  photos: PropTypes.array
+  data: PropTypes.array
 }
