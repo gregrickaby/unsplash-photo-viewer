@@ -1,2 +1,5 @@
 .card {
+  @apply m-auto;
+
+  max-width: 960px;
 }
