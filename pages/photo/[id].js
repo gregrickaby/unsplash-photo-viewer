@@ -1,10 +1,10 @@
 import {getPhotoById} from '@/api/getPhotos'
 import Description from '@/components/Description'
+import Exif from '@/components/Exif'
 import Figure from '@/components/Figure'
 import Layout from '@/components/Layout'
 import Photographer from '@/components/Photographer'
 import Social from '@/components/Social'
-import Technical from '@/components/Technical'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 import {useRef, useState} from 'react'
@@ -51,14 +51,6 @@ export default function Photo({data}) {
         width={width}
       />
 
-      <div className="footer">
-        <button onClick={toggleDialog}>Details</button>
-
-        <Link href="/">
-          <button>Back</button>
-        </Link>
-      </div>
-
       <dialog
         className="dialog"
         ref={detailsDialog}
@@ -73,9 +65,16 @@ export default function Photo({data}) {
           <Description description={description} />
           <Photographer avatar={small} link={html} name={name} />
           <Social downloads={downloads} likes={likes} views={views} />
-          <Technical height={height} width={width} exif={exif} />
+          <Exif height={height} width={width} exif={exif} />
         </div>
       </dialog>
+
+      <div className="footer">
+        <Link href="/">
+          <button>&#x2190; Back</button>
+        </Link>
+        <button onClick={toggleDialog}>Details</button>
+      </div>
     </Layout>
   )
 }
