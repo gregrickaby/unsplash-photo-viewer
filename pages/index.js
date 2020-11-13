@@ -30,12 +30,16 @@ export default function Homepage({data}) {
                 key={index}
                 id={photo.id}
                 alt={photo.alt_description}
-                src={photo.urls.regular}
+                source={photo.urls.regular}
+                height={photo.height}
+                width={photo.width}
               />
             )
           })}
       </div>
-      <button onClick={loadMore}>Load more photos</button>
+      <div className="footer">
+        <button onClick={loadMore}>Load more photos</button>
+      </div>
     </Layout>
   )
 }
