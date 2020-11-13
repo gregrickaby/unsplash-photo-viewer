@@ -7,7 +7,7 @@
 3. Create a fetcher with useSWR or Axios ✅
 4. Query 500 images from Unsplash API at build time, with 60 second revalidation ✅
 5. Lazy load the first 9 images in a masonry grid ✅
-6. Using Intersection Observer, lazy load the next 9 images
+6. Using a button, lazy load the next images
 7. Create single page for each image, which includes all the details ✅
 8. Display tags as facet, clicking a facet will filter the photos
 9. Use TailwindCSS + CSS Modules for styles ✅
