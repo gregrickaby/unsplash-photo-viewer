@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-export default function Technical(data) {
+export default function Exif(data) {
   const {
     height,
     width,
@@ -8,7 +8,7 @@ export default function Technical(data) {
   } = data
   return (
     <div>
-      <strong>Technical Details</strong>
+      <strong>EXIF</strong>
       <p>
         Size: {width} × {height}
       </p>
@@ -22,7 +22,7 @@ export default function Technical(data) {
   )
 }
 
-Technical.propTypes = {
+Exif.propTypes = {
   data: PropTypes.shape({
     height: PropTypes.number.isRequired,
     width: PropTypes.number.isRequired,
