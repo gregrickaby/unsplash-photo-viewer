@@ -1,4 +1,4 @@
-import {getPhotoById, getPhotos} from '@/api/getPhotos'
+import {getPhotoById} from '@/api/getPhotos'
 import Layout from '@/components/common/Layout'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -25,7 +25,6 @@ export default function Photo({photo}) {
   } = photo
 
   const [dialog, setDialog] = useState(false)
-
   const detailsDialog = useRef(null)
 
   function toggleDialog() {
@@ -106,26 +105,39 @@ export default function Photo({photo}) {
   )
 }
 
-export async function getStaticPaths() {
-  const photos = await getPhotos()
-
-  return {
-    paths: photos.map((photo) => {
-      return {
-        params: {
-          id: `${photo.id}`
-        }
-      }
-    }),
-    fallback: true
-  }
-}
-
-export async function getStaticProps({params}) {
+export async function getServerSideProps({params}) {
   const photo = await getPhotoById(params.id)
   return {props: {photo}}
 }
 
 Photo.propTypes = {
-  photo: PropTypes.object
+  photo: PropTypes.shape({
+    width: PropTypes.number,
+    height: PropTypes.number,
+    description: PropTypes.string,
+    alt_description: PropTypes.string,
+    likes: PropTypes.number,
+    views: PropTypes.number,
+    downloads: PropTypes.number,
+    urls: PropTypes.shape({
+      full: PropTypes.string
+    }),
+    exif: PropTypes.shape({
+      make: PropTypes.string,
+      model: PropTypes.string,
+      exposure_time: PropTypes.string,
+      aperture: PropTypes.string,
+      focal_length: PropTypes.string,
+      iso: PropTypes.number
+    }),
+    user: PropTypes.shape({
+      name: PropTypes.string,
+      links: PropTypes.shape({
+        html: PropTypes.string
+      }),
+      profile_image: PropTypes.shape({
+        small: PropTypes.string
+      })
+    })
+  })
 }
