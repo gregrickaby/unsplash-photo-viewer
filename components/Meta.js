@@ -2,8 +2,8 @@ import config from '@/lib/config'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
 
-export default function Meta(props) {
-  const {title, description} = props
+export default function Meta(data) {
+  const {title, description} = data
   const {author, siteUrl} = config
 
   return (
@@ -61,6 +61,8 @@ Meta.defaultProps = {
 }
 
 Meta.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    description: PropTypes.string
+  })
 }

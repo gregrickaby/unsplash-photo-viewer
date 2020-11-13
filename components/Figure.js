@@ -17,8 +17,10 @@ export default function Figure(data) {
 }
 
 Figure.propTypes = {
-  description: PropTypes.string.isRequired,
-  height: PropTypes.number.isRequired,
-  source: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired
+  data: PropTypes.shape({
+    description: PropTypes.string.isRequired,
+    height: PropTypes.number.isRequired,
+    source: PropTypes.string.isRequired,
+    width: PropTypes.number.isRequired
+  })
 }
