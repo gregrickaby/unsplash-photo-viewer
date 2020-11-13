@@ -21,18 +21,20 @@ export default function Homepage(props) {
 
   return (
     <Layout>
-      {!!photos &&
-        photos.length > 0 &&
-        photos.map((photo, index) => {
-          return (
-            <Card
-              key={index}
-              id={photo.id}
-              alt={photo.alt_description}
-              src={photo.urls.regular}
-            />
-          )
-        })}
+      <div className="grid">
+        {!!photos &&
+          photos.length > 0 &&
+          photos.map((photo, index) => {
+            return (
+              <Card
+                key={index}
+                id={photo.id}
+                alt={photo.alt_description}
+                src={photo.urls.regular}
+              />
+            )
+          })}
+      </div>
       <button
         className="bg-gray-400 p-4 mt-4 flex justify-center m-auto text-center"
         onClick={loadMore}
