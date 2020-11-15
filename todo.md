@@ -10,7 +10,7 @@
 6. Create single page for each image, which includes all the details ✅
 7. Display tags as facet, clicking a facet will filter the photos
 8. Use TailwindCSS + CSS Modules for styles ✅
-9. Offer dark mode
+9. Offer dark mode ✅
 
 ## Issues
 
