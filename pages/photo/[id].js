@@ -7,7 +7,7 @@ import Photographer from '@/components/Photographer'
 import Social from '@/components/Social'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
-import {useRef, useState} from 'react'
+import {useState} from 'react'
 
 export default function Photo({data}) {
   const {
@@ -27,19 +27,9 @@ export default function Photo({data}) {
     }
   } = data
 
-  const [dialog, setDialog] = useState(false)
-  const detailsDialog = useRef(null)
-
-  function toggleDialog() {
-    if (dialog) {
-      setDialog(false)
-      detailsDialog.current.close()
-    }
-
-    if (!dialog) {
-      setDialog(true)
-      detailsDialog.current.show()
-    }
+  const [isActive, setActive] = useState(false)
+  const handleToggle = () => {
+    setActive(!isActive)
   }
 
   return (
@@ -51,29 +41,20 @@ export default function Photo({data}) {
         width={width}
       />
 
-      <dialog
-        className="dialog"
-        ref={detailsDialog}
-        onKeyDown={(e) => {
-          if (e.code === 'Escape') toggleDialog()
-        }}
-      >
-        <button className="close-dialog" onClick={toggleDialog}>
-          <span className="sr-only">Close details</span>X
-        </button>
+      <div className={`dialog ${isActive ? 'show' : ''}`}>
         <div className="details">
           <Description description={description} />
           <Photographer avatar={small} link={html} name={name} />
           <Social downloads={downloads} likes={likes} views={views} />
           <Exif height={height} width={width} exif={exif} />
         </div>
-      </dialog>
+      </div>
 
       <div className="footer">
         <Link href="/">
           <button>&#x2190; Back</button>
         </Link>
-        <button onClick={toggleDialog}>Details</button>
+        <button onClick={handleToggle}>Details</button>
       </div>
     </Layout>
   )

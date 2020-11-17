@@ -35,14 +35,15 @@
 }
 
 .dialog {
-  @apply fixed left-0 border rounded-lg border-gray-300;
+  @apply hidden fixed border rounded-lg border-gray-300;
 
-  bottom: 15%;
+  right: 15%;
+  bottom: 10%;
   max-width: 300px;
+}
 
-  & .close-dialog {
-    @apply float-right bg-white m-0 leading-none block font-bold;
-  }
+.dialog.show {
+  display: block;
 }
 
 .details {
