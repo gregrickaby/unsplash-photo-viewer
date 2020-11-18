@@ -60,25 +60,41 @@
 }
 
 #modal {
-  @apply fixed top-0 left-0 flex justify-center items-center w-full h-full;
+  @apply fixed top-0 left-0 flex justify-center items-center w-full h-full overflow-auto;
 
   background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.5s ease-in-out;
 
   & .modal-window {
-    @apply relative bg-gray-900 py-8 px-16 rounded-sm shadow-sm gap-4;
+    @apply relative p-8 w-9/12 rounded shadow-lg gap-4;
 
+    animation-duration: 0.5s;
+    animation-name: animatetop;
+    background-color: rgba(0, 0, 0, 0.5);
     display: grid;
   }
 
   & .modal-close {
     @apply absolute;
 
-    top: 20px;
     right: 20px;
+    top: 20px;
   }
 
   &:not(:target) {
-    @apply hidden opacity-0;
+    @apply hidden opacity-0 pointer-events-none;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    opacity: 0;
+    top: -300px;
+  }
+
+  to {
+    opacity: 1;
+    top: 0;
   }
 }
 
@@ -88,7 +104,8 @@ h1 {
   overflow-wrap: anywhere;
 }
 
-button {
+button,
+.button {
   @apply bg-gray-400 p-4 flex m-auto text-center rounded;
 
   &:hover,
@@ -103,18 +120,21 @@ button {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: masonry;
   }
+
+  #modal .modal-window {
+    width: 450px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
-  body,
-  .dialog {
+  body {
     @apply text-white;
 
     background-color: #111;
   }
 
   button,
-  .dialog .close-dialog {
+  .button {
     @apply text-white;
 
     background-color: #444;
