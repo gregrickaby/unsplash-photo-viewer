@@ -34,18 +34,6 @@
   @apply flex mt-8;
 }
 
-.dialog {
-  @apply hidden fixed border rounded-lg border-gray-300;
-
-  right: 15%;
-  bottom: 10%;
-  max-width: 300px;
-}
-
-.dialog.show {
-  display: block;
-}
-
 .details {
   @apply p-4;
 
@@ -68,6 +56,29 @@
 
   & img {
     @apply mr-2;
+  }
+}
+
+#modal {
+  @apply fixed top-0 left-0 flex justify-center items-center w-full h-full;
+
+  background-color: rgba(0, 0, 0, 0.5);
+
+  & .modal-window {
+    @apply relative bg-gray-900 py-8 px-16 rounded-sm shadow-sm gap-4;
+
+    display: grid;
+  }
+
+  & .modal-close {
+    @apply absolute;
+
+    top: 20px;
+    right: 20px;
+  }
+
+  &:not(:target) {
+    @apply hidden opacity-0;
   }
 }
 
