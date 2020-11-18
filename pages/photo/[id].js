@@ -3,11 +3,11 @@ import Description from '@/components/Description'
 import Exif from '@/components/Exif'
 import Figure from '@/components/Figure'
 import Layout from '@/components/Layout'
+import Modal from '@/components/Modal'
 import Photographer from '@/components/Photographer'
 import Social from '@/components/Social'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
-import {useState} from 'react'
 
 export default function Photo({data}) {
   const {
@@ -27,11 +27,6 @@ export default function Photo({data}) {
     }
   } = data
 
-  const [isActive, setActive] = useState(false)
-  const handleToggle = () => {
-    setActive(!isActive)
-  }
-
   return (
     <Layout>
       <Figure
@@ -41,20 +36,20 @@ export default function Photo({data}) {
         width={width}
       />
 
-      <div className={`dialog ${isActive ? 'show' : ''}`}>
-        <div className="details">
-          <Description description={description} />
-          <Photographer avatar={small} link={html} name={name} />
-          <Social downloads={downloads} likes={likes} views={views} />
-          <Exif height={height} width={width} exif={exif} />
-        </div>
-      </div>
+      <Modal>
+        <Description description={description} />
+        <Photographer avatar={small} link={html} name={name} />
+        <Social downloads={downloads} likes={likes} views={views} />
+        <Exif height={height} width={width} exif={exif} />
+      </Modal>
 
       <div className="footer">
         <Link href="/">
           <button>&#x2190; Back</button>
         </Link>
-        <button onClick={handleToggle}>Details</button>
+        <a className="button" href="#modal">
+          Details
+        </a>
       </div>
     </Layout>
   )
