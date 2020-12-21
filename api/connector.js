@@ -1,4 +1,15 @@
 import axios from 'axios'
+import axiosRetry from 'axios-retry'
+
+/**
+ * Define Axios Retry options.
+ *
+ * @see https://github.com/softonic/axios-retry#usage
+ */
+const axiosRetryOptions = {
+  retries: 10,
+  retryDelay: axiosRetry.exponentialDelay
+}
 
 /**
  * Set up Axios config options.
@@ -18,3 +29,4 @@ const axiosConfig = {
  * Export an instance of Axios.
  */
 export const unsplashApi = axios.create(axiosConfig)
+axiosRetry(unsplashApi, axiosRetryOptions)
