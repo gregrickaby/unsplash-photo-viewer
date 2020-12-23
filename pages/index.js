@@ -24,10 +24,10 @@ export default function Homepage({data}) {
       <div className="grid">
         {!!photos &&
           photos.length > 0 &&
-          photos.map((photo, index) => {
+          photos.map((photo) => {
             return (
               <Card
-                key={index}
+                key={photo.id}
                 id={photo.id}
                 alt={photo.alt_description}
                 source={photo.urls.regular}
