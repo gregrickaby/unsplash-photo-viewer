@@ -46,11 +46,12 @@ export default function Homepage({data}) {
 
 export async function getStaticProps() {
   const data = await getPhotos()
+
   return {
     props: {
       data
     },
-    revalidate: 60
+    revalidate: 300
   }
 }
 
