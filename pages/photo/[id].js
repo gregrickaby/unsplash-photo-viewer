@@ -1,4 +1,4 @@
-import {getPhotoById} from '@/api/getPhotos'
+import {getPhotoById, getPhotos} from '@/api/getPhotos'
 import Description from '@/components/Description'
 import Exif from '@/components/Exif'
 import Figure from '@/components/Figure'
@@ -7,9 +7,11 @@ import Modal from '@/components/Modal'
 import Photographer from '@/components/Photographer'
 import Social from '@/components/Social'
 import Link from 'next/link'
+import {useRouter} from 'next/router'
 import PropTypes from 'prop-types'
 
 export default function Photo({data}) {
+  const router = useRouter()
   const {
     width,
     height,
@@ -26,6 +28,17 @@ export default function Photo({data}) {
       profile_image: {small}
     }
   } = data
+
+  // If the page wasn't statically generated,
+  // display "loading" until Next.js builds
+  // the page silently in the background.
+  if (router.isFallback) {
+    return (
+      <Layout>
+        <h1>Loading...</h1>
+      </Layout>
+    )
+  }
 
   return (
     <Layout>
@@ -55,9 +68,29 @@ export default function Photo({data}) {
   )
 }
 
-export async function getServerSideProps({params}) {
+export async function getStaticPaths() {
+  const photos = await getPhotos()
+  const paths = photos.map((photo) => ({
+    params: {
+      id: photo.id
+    }
+  }))
+
+  return {
+    paths,
+    fallback: 'blocking' // We don't know all the IDs, so SSR those pages.
+  }
+}
+
+export async function getStaticProps({params}) {
   const data = await getPhotoById(params.id)
-  return {props: {data}}
+
+  return {
+    props: {
+      data
+    },
+    revalidate: 300
+  }
 }
 
 Photo.propTypes = {
