@@ -19,7 +19,7 @@
 }
 
 .site-description {
-  @apply text-xl;
+  @apply text-lg;
 }
 
 .grid {
