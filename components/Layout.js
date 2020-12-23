@@ -1,5 +1,6 @@
 import config from '@/functions/config'
 import PropTypes from 'prop-types'
+import Header from './Header'
 import Meta from './Meta'
 
 export default function Layout({children, ...props}) {
@@ -8,6 +9,7 @@ export default function Layout({children, ...props}) {
   return (
     <>
       <Meta title={title} description={description} />
+      <Header />
       <main className="container">{children}</main>
     </>
   )
