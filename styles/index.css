@@ -10,6 +10,18 @@
   @apply m-auto p-4 text-center text-sm;
 }
 
+.header {
+  @apply my-4 text-center;
+}
+
+.site-title {
+  @apply text-3xl mb-1;
+}
+
+.site-description {
+  @apply text-xl;
+}
+
 .grid {
   display: grid;
   gap: 10px;
