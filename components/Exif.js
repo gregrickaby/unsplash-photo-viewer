@@ -7,7 +7,7 @@ export default function Exif(data) {
     exif: {make, model, exposure_time, aperture, focal_length, iso}
   } = data
   return (
-    <div>
+    <>
       <strong>EXIF</strong>
       <p>
         Size: {width} × {height}
@@ -18,7 +18,7 @@ export default function Exif(data) {
       <p>Focal Length: {focal_length}</p>
       <p>Shutter Speed: {exposure_time}s</p>
       <p>ISO: {iso}</p>
-    </div>
+    </>
   )
 }
 

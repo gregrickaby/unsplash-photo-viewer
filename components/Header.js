@@ -3,13 +3,13 @@ import Link from 'next/link'
 
 export default function Header() {
   return (
-    <header className="header">
-      <h1 className="site-title">
+    <header id="header" className="max-w-sm m-auto">
+      <h1 className="text-4xl mb-4">
         <Link href="/">
           <a>{config.siteName}</a>
         </Link>
       </h1>
-      <p className="site-description">{config.siteDescription}</p>
+      <p className="text-1xl mb-4">{config.siteDescription}</p>
     </header>
   )
 }

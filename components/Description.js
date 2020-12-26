@@ -10,7 +10,7 @@ export default function Description(data) {
   return (
     <div>
       <strong>Description</strong>
-      <h1 className="description">{description}</h1>
+      <h1>{description}</h1>
     </div>
   )
 }

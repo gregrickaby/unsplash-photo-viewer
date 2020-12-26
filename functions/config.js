@@ -3,5 +3,5 @@ module.exports = {
   siteDescription: 'The latest photos from Unsplash',
   siteUrl: 'https://unsplash-photo-viewer.vercel.app',
   siteAuthor: '@gregrickaby',
-  authorUrl: 'https://github.com/gregrickaby'
+  authorUrl: 'https://gregrickaby.com'
 }

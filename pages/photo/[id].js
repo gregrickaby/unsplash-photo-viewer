@@ -3,14 +3,14 @@ import Description from '@/components/Description'
 import Exif from '@/components/Exif'
 import Figure from '@/components/Figure'
 import Layout from '@/components/Layout'
-import Modal from '@/components/Modal'
 import Photographer from '@/components/Photographer'
 import Social from '@/components/Social'
-import Link from 'next/link'
 import {useRouter} from 'next/router'
 import PropTypes from 'prop-types'
+import {useState} from 'react'
 
 export default function Photo({data}) {
+  const [showDetails, setShowDetails] = useState(false)
   const router = useRouter()
   const {
     width,
@@ -28,6 +28,10 @@ export default function Photo({data}) {
       profile_image: {small}
     }
   } = data
+
+  function showDetailsToggler() {
+    setShowDetails((prev) => !prev)
+  }
 
   // If the page wasn't statically generated,
   // display "loading" until Next.js builds
@@ -49,21 +53,21 @@ export default function Photo({data}) {
         width={width}
       />
 
-      <Modal>
-        <Description description={description} />
-        <Photographer avatar={small} link={html} name={name} />
-        <Social downloads={downloads} likes={likes} views={views} />
-        <Exif height={height} width={width} exif={exif} />
-      </Modal>
+      <aside className="flex py-4 justify-between items-center">
+        <a href="/">&#x2190; Back</a>
 
-      <div className="footer">
-        <Link href="/">
-          <button>&#x2190; Back</button>
-        </Link>
-        <a className="button" href="#modal">
-          Details
-        </a>
-      </div>
+        <div>
+          <button onClick={showDetailsToggler}>Show Details</button>
+          {showDetails && (
+            <div className="flex text-left">
+              <Description description={description} />
+              <Photographer avatar={small} link={html} name={name} />
+              <Social downloads={downloads} likes={likes} views={views} />
+              <Exif height={height} width={width} exif={exif} />
+            </div>
+          )}
+        </div>
+      </aside>
     </Layout>
   )
 }

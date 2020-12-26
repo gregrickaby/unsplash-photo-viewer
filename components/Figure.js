@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 export default function Figure(data) {
   const {source, description, width, height} = data
   return (
-    <figure className="image-container">
+    <figure>
       <Image
         src={source}
         alt={description}

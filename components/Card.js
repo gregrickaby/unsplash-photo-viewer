@@ -6,7 +6,7 @@ export default function Card(data) {
   const {id, alt, source, height, width} = data
 
   return (
-    <article className="card">
+    <article className="relative">
       <Link href={`/photo/${id}`}>
         <a aria-label={alt}>
           <div className="card-container">
