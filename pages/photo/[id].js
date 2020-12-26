@@ -59,7 +59,7 @@ export default function Photo({data}) {
         <div>
           <button onClick={showDetailsToggler}>Show Details</button>
           {showDetails && (
-            <div className="flex text-left">
+            <div className="text-left">
               <Description description={description} />
               <Photographer avatar={small} link={html} name={name} />
               <Social downloads={downloads} likes={likes} views={views} />
