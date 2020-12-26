@@ -10,9 +10,12 @@ export default function Homepage({data}) {
     rootMargin: '200px 0px'
   })
   const [photos, setPhotos] = useState(data)
+  const [loadingMore, setLoadingMore] = useState(false)
   const page = useRef(2)
 
-  async function loadMore() {
+  async function loadMorePosts() {
+    setLoadingMore(true)
+
     // Go fetch the next page worth of photos.
     const newPhotos = await getPhotos(page.current)
 
@@ -21,10 +24,12 @@ export default function Homepage({data}) {
 
     // Increment page number after each load.
     page.current++
+
+    setLoadingMore(false)
   }
 
   useEffect(() => {
-    loadMore()
+    loadMorePosts()
   }, [inView])
 
   return (
@@ -45,8 +50,13 @@ export default function Homepage({data}) {
             )
           })}
       </div>
-      <div ref={ref}>
-        <button onClick={loadMore}>Load more photos</button>
+      <div ref={ref} className="mt-4">
+        <button
+          className="flex border py-2 px-4 m-auto"
+          onClick={loadMorePosts}
+        >
+          {loadingMore ? <>Loading...</> : <>Load More Posts</>}
+        </button>
       </div>
     </Layout>
   )
