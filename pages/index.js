@@ -2,9 +2,13 @@ import {getPhotos} from '@/api/getPhotos'
 import Card from '@/components/Card'
 import Layout from '@/components/Layout'
 import PropTypes from 'prop-types'
-import {useRef, useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
+import {useInView} from 'react-intersection-observer'
 
 export default function Homepage({data}) {
+  const [ref, inView] = useInView({
+    rootMargin: '200px 0px'
+  })
   const [photos, setPhotos] = useState(data)
   const page = useRef(2)
 
@@ -19,25 +23,29 @@ export default function Homepage({data}) {
     page.current++
   }
 
+  useEffect(() => {
+    loadMore()
+  }, [inView])
+
   return (
     <Layout>
       <div className="grid">
         {!!photos &&
           photos.length > 0 &&
-          photos.map((photo) => {
+          photos.map((photo, index) => {
             return (
               <Card
-                key={photo.id}
-                id={photo.id}
-                alt={photo.alt_description}
-                source={photo.urls.regular}
-                height={photo.height}
-                width={photo.width}
+                key={index}
+                id={photo?.id}
+                alt={photo?.alt_description}
+                source={photo?.urls.regular}
+                height={photo?.height}
+                width={photo?.width}
               />
             )
           })}
       </div>
-      <div className="footer">
+      <div ref={ref}>
         <button onClick={loadMore}>Load more photos</button>
       </div>
     </Layout>
