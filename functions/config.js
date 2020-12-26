@@ -1,8 +1,7 @@
-const config = {
+module.exports = {
   siteName: 'Unsplash Photo Viewer',
   siteDescription: 'The latest photos from Unsplash',
   siteUrl: 'https://unsplash-photo-viewer.vercel.app',
-  author: '@gregrickaby'
+  siteAuthor: '@gregrickaby',
+  authorUrl: 'https://github.com/gregrickaby'
 }
-
-export default config
