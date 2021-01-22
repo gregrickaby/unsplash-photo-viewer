@@ -35,8 +35,7 @@ export default function Homepage({data}) {
   return (
     <Layout>
       <div className="grid">
-        {!!photos &&
-          photos.length > 0 &&
+        {!!photos?.length &&
           photos.map((photo, index) => {
             return (
               <Card
