@@ -1,3 +1,4 @@
+import '@/styles/global.css'
 import '@/styles/index.css'
 import PropTypes from 'prop-types'
 
