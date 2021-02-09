@@ -1,7 +1,7 @@
 {
   "name": "unsplash-photos",
   "version": "0.1.0",
-  "description": "Display my photos from Unsplash.",
+  "description": "The latest photos from Unsplash.",
   "homepage": "https://github.com/gregrickaby/unsplash/blob/main/README.md",
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
   "private": true,
   "license": "GPL-2.0",
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "scripts": {
     "build": "next build",
@@ -22,7 +22,7 @@
     "dev": "yarn clean && next dev",
     "develop": "yarn dev",
     "export": "next export",
-    "format": "npx prettier --config=prettier.config.js '**/*.{js,jsx,ts,tsx,md,html,css,scss,json}' --write || true",
+    "format": "npx prettier --config=prettier.config.js '**/*.{js,jsx,ts,tsx,md,html,css,scss,json,yml}' --write || true",
     "lint": "yarn format && yarn lint:js && yarn lint:css",
     "lint:css": "npx stylelint --config=stylelint.config.js '**/*.css' --fix || true",
     "lint:js": "npx eslint --config=.eslintrc.js ./ --fix || true",
@@ -31,24 +31,23 @@
   "dependencies": {
     "axios": "^0.21.1",
     "axios-retry": "^3.1.9",
-    "next": "10.0.5",
+    "next": "10.0.6",
     "react": "17.0.1",
     "react-dom": "17.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "autoprefixer": "^10.2.3",
+    "@arkweid/lefthook": "^0.7.2",
+    "@babel/core": "^7.12.13",
+    "autoprefixer": "^10.2.4",
     "babel-loader": "^8.2.2",
-    "eslint": "^7.18.0",
+    "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^4.3.8",
-    "lint-staged": "^10.5.3",
-    "postcss": "^8.2.4",
+    "postcss": "^8.2.5",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.2.1",
@@ -56,16 +55,6 @@
     "react-intersection-observer": "^8.31.0",
     "stylelint": "^13.9.0",
     "stylelint-config-standard": "^20.0.0",
-    "tailwindcss": "^2.0.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": "npx eslint --config=.eslintrc.js --fix",
-    "*.css": "npx stylelint --config=stylelint.config.js --fix",
-    "*.{md,json,html}": "npx prettier --config=prettier.config.js --write"
+    "tailwindcss": "^2.0.3"
   }
 }
