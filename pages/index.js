@@ -1,6 +1,6 @@
-import {getPhotos} from '@/api/getPhotos'
 import Card from '@/components/Card'
 import Layout from '@/components/Layout'
+import {getPhotos} from '@/lib/getPhotos'
 import PropTypes from 'prop-types'
 import {useEffect, useRef, useState} from 'react'
 import {useInView} from 'react-intersection-observer'
