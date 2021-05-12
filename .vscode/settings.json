@@ -1,7 +1,7 @@
 {
   "css.validate": false,
   "editor.formatOnSave": true,
-  "editor.renameOnType": true,
+  "editor.linkedEditing": true,
   "editor.formatOnPaste": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
