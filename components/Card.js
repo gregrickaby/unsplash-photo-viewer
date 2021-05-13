@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 
@@ -10,10 +9,10 @@ export default function Card(data) {
       <Link href={`/photo/${id}`}>
         <a aria-label={alt}>
           <div className="card-container">
-            <Image
+            <img
               src={source}
               alt={alt}
-              layout="responsive"
+              loading="lazy"
               width={width}
               height={height}
             />
